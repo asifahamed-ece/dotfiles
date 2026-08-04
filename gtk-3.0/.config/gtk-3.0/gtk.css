@@ -1,0 +1,40 @@
+/* --- TRANSLUCENT GSIMPLECAL --- */
+window.gsimplecal, window.gsimplecal.background {
+    background-color: rgba(15, 15, 20, 0.85) !important; /* 0.85 alpha = translucent */
+    color: #e1e4da !important;
+    border: 1px solid rgba(156, 181, 201, 0.4) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+}
+window.gsimplecal * {
+    background-color: transparent !important;
+    color: #e1e4da !important;
+}
+window.gsimplecal calendar {
+    background-color: transparent !important;
+    color: #e1e4da !important;
+    font-size: 13px !important;
+    font-family: "JetBrainsMono Nerd Font Propo", sans-serif !important;
+}
+window.gsimplecal calendar:selected {
+    background-color: #9cb5c9 !important;
+    color: #0f0f14 !important;
+    border-radius: 6px !important;
+    font-weight: bold !important;
+}
+window.gsimplecal calendar.header {
+    color: #9cb5c9 !important;
+    background-color: transparent !important;
+    font-weight: bold !important;
+}
+window.gsimplecal calendar.button {
+    color: #9cb5c9 !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+window.gsimplecal calendar.button:hover {
+    background-color: rgba(156, 181, 201, 0.2) !important;
+}
+window.gsimplecal calendar:indeterminate {
+    color: rgba(225, 228, 218, 0.25) !important;
+}

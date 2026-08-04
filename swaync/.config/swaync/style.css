@@ -1,0 +1,241 @@
+/*
+ * swaync style.css — matches the glass theme used across waybar/style.css
+ * and the rofi/wofi popups (same primary blue, translucent glass background,
+ * glossy top-sheen gradient on hover/selected items).
+ *
+ * Palette pulled straight from waybar's style.css so any matugen-driven
+ * accent color change there can be mirrored here too.
+ */
+
+@define-color primary #9cb5c9;
+@define-color bg_translucent rgba(15, 15, 20, 0.75);
+@define-color module_bg rgba(255, 255, 255, 0.08);
+@define-color module_bg_hover rgba(255, 255, 255, 0.14);
+@define-color glass_border rgba(255, 255, 255, 0.12);
+@define-color on_surface #e1e4da;
+@define-color text_dark #1d2021;
+@define-color critical #f38ba8;
+@define-color warning #fab387;
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "Font Awesome 6 Free", sans-serif;
+  font-size: 13px;
+  transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+/* --- CONTROL CENTER PANEL (the dropdown you get on click) ---
+   Background made more translucent for a stronger "glass" read, and the
+   flat 1px border swapped for a gradient border-image matching the same
+   blue -> pink -> orange gradient used on Hyprland's active window border. */
+.control-center {
+  background: rgba(15, 15, 20, 0.55);
+  border-radius: 18px;
+  padding: 10px;
+
+  border: 2px solid transparent;
+  border-image-source: linear-gradient(135deg, #89b4fa, #f38ba8, #fab387);
+  border-image-slice: 1;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.control-center-list-placeholder {
+  color: @on_surface;
+  opacity: 0.5;
+}
+
+/* Header row: "Notifications" title + "Clear All" button */
+.widget-title {
+  background: transparent;
+  color: @on_surface;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 6px 8px 10px 8px;
+}
+.widget-title > button {
+  background: @module_bg;
+  color: @on_surface;
+  border: 1px solid @glass_border;
+  border-radius: 10px;
+  padding: 4px 12px;
+  font-size: 12px;
+}
+.widget-title > button:hover {
+  background: @primary;
+  color: @text_dark;
+  border-color: @primary;
+  box-shadow: 0 0 12px rgba(156, 181, 201, 0.5);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.0) 65%);
+}
+
+/* Do Not Disturb toggle row */
+.widget-dnd {
+  background: @module_bg;
+  border: 1px solid @glass_border;
+  border-radius: 14px;
+  padding: 8px 12px;
+  margin: 4px 0 10px 0;
+  color: @on_surface;
+}
+.widget-dnd > switch {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+}
+.widget-dnd > switch:checked {
+  background: @primary;
+}
+
+/* --- NOTIFICATION ROWS (both inside the panel and floating popups) --- */
+.notification-row {
+  background: transparent;
+  margin: 4px 2px;
+}
+.notification-row:hover {
+  background: transparent;
+}
+
+/* Glassier background + gradient border-image (same gradient as
+   .control-center above) so every popup/box in the theme reads as one
+   consistent family. box-shadow added for depth against the desktop. */
+.notification {
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  padding: 4px;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.0) 60%);
+
+  border: 1.5px solid transparent;
+  border-image-source: linear-gradient(135deg, #89b4fa, #f38ba8, #fab387);
+  border-image-slice: 1;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+.notification:hover {
+  background: rgba(255, 255, 255, 0.16);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.0) 65%);
+  box-shadow: 0 0 16px rgba(156, 181, 201, 0.4), 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Urgency accents — same red/orange language as the battery/updates states
+   in waybar's style.css, so a critical alert reads the same way everywhere.
+   Border-image overridden to solid critical color so urgency is unambiguous. */
+.notification.critical {
+  border-image-source: linear-gradient(135deg, #f38ba8, #f38ba8);
+  box-shadow: 0 0 12px rgba(243, 139, 168, 0.35), 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+.notification.low {
+  opacity: 0.85;
+}
+
+.notification-content {
+  padding: 8px 10px;
+  color: @on_surface;
+}
+.summary {
+  color: @on_surface;
+  font-weight: 600;
+  font-size: 13px;
+}
+.time {
+  color: @on_surface;
+  opacity: 0.55;
+  font-size: 11px;
+}
+.body {
+  color: @on_surface;
+  opacity: 0.92;
+  font-size: 12px;
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.08);
+  color: @on_surface;
+  border-radius: 8px;
+  margin: 6px;
+  min-width: 22px;
+  min-height: 22px;
+}
+.close-button:hover {
+  background: @critical;
+  color: @text_dark;
+  box-shadow: 0 0 10px rgba(243, 139, 168, 0.5);
+}
+
+.notification-action {
+  background: @module_bg;
+  color: @on_surface;
+  border: 1px solid @glass_border;
+  border-radius: 10px;
+  margin: 4px;
+}
+.notification-action:hover {
+  background: @primary;
+  color: @text_dark;
+  border-color: @primary;
+}
+
+/* --- FLOATING NOTIFICATION POPUPS (the toast that appears top-right) ---
+   These are the ones sitting over blurred/live desktop content, so they get
+   a more opaque glass background than the control-center list (which sits
+   on its own solid panel) to stay legible. This does NOT touch the
+   control-center's copies of these notifications — only the floating toast. */
+.floating-notifications {
+  background: transparent;
+}
+.floating-notifications .notification {
+  min-width: 340px;
+  background: rgba(15, 15, 20, 0.82);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.0) 60%);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+}
+
+/* wifi-scan / bluetooth-search / other transient toasts arrive as "low"
+   urgency, which previously faded the WHOLE box (bg + border + text) via
+   opacity: 0.85 on .notification.low above — that's what was making these
+   nearly invisible against a blurred background. Floating toasts now keep
+   full-strength text and background regardless of urgency; only the
+   control-center list keeps the subtle low-urgency dimming. */
+.floating-notifications .notification.low {
+  opacity: 1;
+}
+.floating-notifications .summary,
+.floating-notifications .body,
+.floating-notifications .time {
+  opacity: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.floating-notifications .body {
+  color: @on_surface;
+}
+
+/* Progress bars (used by wifi-scan/bluetooth-search/volume-style toasts)
+   were inheriting the same washed-out low-contrast look — force a visible
+   trough + fill so the bar itself doesn't disappear into the blur either. */
+.floating-notifications progressbar,
+.floating-notifications trough {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  min-height: 6px;
+}
+.floating-notifications progress {
+  background-color: @primary;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(156, 181, 201, 0.6);
+}
+
+/* HOVER — overrides the generic light-overlay .notification:hover above
+   (that rule was designed for the lighter control-center list background
+   and was blending into brown/grey on top of these darker floating toasts).
+   Stays in the same dark-glass family, just brighter + primary-tinted, and
+   the bigger shadow gives it a "lifted above the blur" foreground feel
+   without changing window stacking (that part is Hyprland/layer-shell, not
+   CSS — see note below). */
+.floating-notifications .notification:hover {
+  background: rgba(15, 15, 20, 0.90);
+  background-image: linear-gradient(180deg, rgba(156, 181, 201, 0.20), rgba(255, 255, 255, 0.0) 65%);
+  border-color: @primary;
+  box-shadow: 0 0 20px rgba(156, 181, 201, 0.5), 0 10px 30px rgba(0, 0, 0, 0.6);
+}

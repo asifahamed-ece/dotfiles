@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1785568779399293-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>edit-paste</icon>
+	<name>Paste clipboard image here</name>
+	<unique-id>clip-save-here</unique-id>
+	<command>/home/shadow/.config/hypr/scripts/clip-save.sh %f</command>
+	<description>Save the copied web image into this folder</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+</actions>

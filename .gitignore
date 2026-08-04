@@ -1,0 +1,11 @@
+# Swap and backup files
+*.swp
+*.swo
+*~
+.DS_Store
+# Python
+__pycache__/
+*.pyc
+# Cache
+*/.cache/
+.git-credentials

@@ -1,0 +1,63 @@
+@import "~/.config/rofi/glass.rasi"
+
+/*
+ * power-menu.rasi — glossy variant of the glass popup for power-menu.sh.
+ * Centered on screen (unlike the top-right WiFi/BT dropdowns), bigger
+ * icons/text since there are only 5 options, and a light-to-dark gradient
+ * on each row to fake a glossy "button" sheen (rofi has no real box-shadow
+ * or highlight layer, so a top-lit gradient is the closest stand-in).
+ */
+
+window {
+    location: center;
+    anchor: center;
+    x-offset: 0px;
+    y-offset: 0px;
+    width: 280px;
+    border: 2px solid;
+    border-color: @primary;
+    border-radius: 20px;
+    padding: 18px;
+    /* soft glass fill with a faint top sheen */
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(15, 15, 20, 0.0));
+}
+
+* {
+    font: "JetBrainsMono Nerd Font Propo 13";
+}
+
+inputbar {
+    enabled: false;
+}
+
+mainbox {
+    children: [ "listview" ];
+}
+
+listview {
+    lines: 5;
+    spacing: 6px;
+}
+
+element {
+    padding: 12px 16px;
+    border-radius: 14px;
+    background-color: @bg-glass-alt;
+    border: 1px solid;
+    border-color: @border-glass;
+    children: [ "element-text" ];
+    /* subtle top-lit gloss on every row, not just the selected one */
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.0));
+}
+
+element selected {
+    background-color: @primary;
+    text-color: #1d2021;
+    border-color: @primary;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.0));
+}
+
+element-text {
+    horizontal-align: 0.5;
+    font: "JetBrainsMono Nerd Font Propo 13 Bold";
+}

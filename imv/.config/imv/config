@@ -1,0 +1,13 @@
+# imv configuration
+# Catppuccin base background, no white flash
+[options]
+background = 1e1e2e
+scaling_mode = shrink
+# overlay = true
+
+[binds]
+# Horizontal navigation
+<Right> = next
+<Left> = prev
+l = next
+h = prev

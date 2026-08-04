@@ -1,0 +1,20 @@
+@import "~/.config/rofi/glass.rasi"
+
+/* bluetooth-menu.rasi — same glass base, sized for the
+   name / status / MAC columns printed by bluetooth-menu.sh */
+
+window {
+    width: 420px;
+}
+
+* {
+    font: "JetBrainsMono Nerd Font Propo 11";
+}
+
+element {
+    padding: 8px 12px;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font Propo 11";
+}

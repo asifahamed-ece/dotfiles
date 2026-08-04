@@ -1,0 +1,341 @@
+@import url("../../.cache/matugen/colors.css");
+
+@define-color primary #9cb5c9;
+@define-color bg_translucent rgba(15, 15, 20, 0.65);
+@define-color module_bg rgba(255, 255, 255, 0.08);
+@define-color module_bg_hover rgba(255, 255, 255, 0.14);
+@define-color glass_border rgba(255, 255, 255, 0.12);
+@define-color on_surface #e1e4da;
+@define-color text #1d2021;
+@define-color wifi_connected #a6e3a1;
+@define-color wifi_disconnected #f38ba8;
+
+/* Standard smooth-glass easing used everywhere below — GTK has no cubic-bezier
+   shortcuts/custom-properties like the web does, so the curve is spelled out
+   in full on every transition rather than referenced from one variable. */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "Font Awesome 6 Free", sans-serif;
+  font-size: 13px;
+  border: 0;
+  border-width: 0;
+  outline: 0;
+  border-radius: 0;
+}
+
+/* --- TOOLTIP --- */
+tooltip {
+  background: rgba(17, 17, 27, 0.85);
+  border: 1px solid @primary;
+  border-radius: 14px;
+  color: @on_surface;
+  padding: 10px 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+tooltip label {
+  font-size: 12px;
+  font-weight: 500;
+  color: @on_surface;
+}
+
+/* --- MAIN WINDOW --- */
+window#waybar {
+  background: @bg_translucent;
+  color: @on_surface;
+  border-radius: 16px;
+  padding: 0 10px;
+  min-height: 0;
+  transition: background-color 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+/* For the glass to actually blur what's behind the bar (not just tint it),
+   add this to hyprland.conf / hyprland.lua — CSS alone can't blur the desktop:
+     layerrule = match:namespace waybar, blur on
+     layerrule = match:namespace waybar, ignore_alpha 0.15               */
+
+/* =========================================
+   SHARED GLASS CARD — every pill/box below
+   inherits this same rounded, bordered,
+   translucent, smoothly-animated base.
+   ========================================= */
+#custom-updates, #custom-cpu-temp, #custom-gpu-temp, #custom-notification, #custom-clipboard,
+#tray, #custom-arch-logo, #custom-network, #custom-bluetooth, #custom-volume,
+#custom-battery, #clock, #custom-power {
+  margin: 3px 4px;
+  padding: 0 13px;
+  border-radius: 12px;
+  background: @module_bg;
+  border: 1px solid @glass_border;
+  min-height: 0;
+  transition:
+    background-color 280ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    border-color 280ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    box-shadow 280ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    color 280ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    padding 180ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    margin 180ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Generic hover "lift" — brighten glass, glow border, and fake a scale-up by
+   trading margin for padding (GTK doesn't support transform: scale, this reads
+   the same way visually since the pill grows by the same couple of pixels) */
+#custom-updates:hover, #custom-cpu-temp:hover, #custom-gpu-temp:hover, #custom-notification:hover,
+#custom-clipboard:hover, #tray:hover, #custom-network:hover, #custom-bluetooth:hover,
+#custom-volume:hover, #custom-battery:hover, #clock:hover {
+  background: @module_bg_hover;
+  border-color: @primary;
+  box-shadow: 0 0 12px rgba(156, 181, 201, 0.35);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.0) 65%);
+  margin: 2px 3px;
+  padding: 0 14px;
+}
+
+/* iOS-style icon glow on hover — same glowy language as the workspace active
+   state, but per-icon via currentColor so each module glows its own color
+   instead of one fixed tint. Layers on top of the background lift above. */
+#custom-updates:hover, #custom-cpu-temp:hover, #custom-gpu-temp:hover, #custom-clipboard:hover,
+#custom-network:hover, #custom-bluetooth:hover, #custom-volume:hover, #custom-battery:hover,
+#custom-notification:hover, #custom-power:hover {
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* --- UPDATES --- */
+#custom-updates {
+  font-weight: 600;
+}
+#custom-updates.updates { color: #fab387; border-color: rgba(250, 179, 135, 0.5); text-shadow: 0 0 6px rgba(250, 179, 135, 0.5); }
+#custom-updates.updated { color: #a6e3a1; border-color: rgba(166, 227, 161, 0.5); }
+#custom-updates.updates:hover {
+  border-color: #fab387;
+  box-shadow: 0 0 14px rgba(250, 179, 135, 0.5);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.0) 65%);
+}
+#custom-updates.updated:hover {
+  border-color: #a6e3a1;
+  box-shadow: 0 0 14px rgba(166, 227, 161, 0.5);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.0) 65%);
+}
+
+/* --- CPU TEMP --- */
+#custom-cpu-temp {
+  color: @primary;
+  text-shadow: 0 0 5px rgba(156, 181, 201, 0.35);
+}
+#custom-cpu-temp:hover {
+  border-color: @primary;
+  box-shadow: 0 0 14px rgba(156, 181, 201, 0.5);
+}
+
+/* --- GPU TEMP — teal accent so it reads as a distinct sibling to CPU --- */
+#custom-gpu-temp {
+  color: #89dceb;
+  text-shadow: 0 0 5px rgba(137, 220, 235, 0.35);
+}
+#custom-gpu-temp:hover {
+  border-color: #89dceb;
+  box-shadow: 0 0 14px rgba(137, 220, 235, 0.5);
+}
+
+/* --- NOTIFICATIONS --- */
+#custom-notification {
+  font-size: 16px;
+  color: @primary;
+  text-shadow: 0 0 5px rgba(156, 181, 201, 0.35);
+}
+/* swaync-client -swb sets class "notification"/"dnd-notification" only while
+   something's actually unread, so this glow only shows up when there's
+   something new to see — same trick as the updates-pending state */
+#custom-notification.notification, #custom-notification.dnd-notification {
+  color: #fab387;
+  text-shadow: 0 0 6px rgba(250, 179, 135, 0.55);
+  border-color: rgba(250, 179, 135, 0.5);
+}
+#custom-notification:hover {
+  border-color: @primary;
+  box-shadow: 0 0 14px rgba(156, 181, 201, 0.5);
+}
+#custom-notification.notification:hover, #custom-notification.dnd-notification:hover {
+  border-color: #fab387;
+  box-shadow: 0 0 14px rgba(250, 179, 135, 0.5);
+}
+
+/* --- CLIPBOARD --- */
+#custom-clipboard {
+  font-size: 16px;
+  color: @primary;
+  text-shadow: 0 0 5px rgba(156, 181, 201, 0.35);
+}
+
+/* --- TRAY --- */
+#tray > widget > image {
+  margin: 0;
+  padding: 0;
+  min-height: 16px;
+  min-width: 16px;
+  transition: opacity 200ms ease;
+}
+
+/* --- ARCH LOGO — glassy circular badge --- */
+#custom-arch-logo {
+  font-size: 18px;
+  color: @primary;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 0 10px;
+  margin: 3px 0px 3px 8px;
+  min-height: 0;
+  transition:
+    background-color 280ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    border-color 280ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    box-shadow 280ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    color 280ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+#custom-arch-logo:hover {
+  background: @module_bg_hover;
+  border-color: @glass_border;
+  color: @on_surface;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(156, 181, 201, 0.35);
+}
+
+/* --- WORKSPACES --- */
+#workspaces {
+  background: transparent;
+  padding: 0;
+  margin: 3px 8px;
+}
+#workspaces button {
+  margin: 0 2px;
+  padding: 0 10px;
+  min-height: 0;
+  min-width: 0;
+  border-radius: 10px;
+  background: @module_bg;
+  border: 1px solid transparent;
+  color: @on_surface;
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    padding 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+#workspaces button.active {
+  background: @primary;
+  color: @text;
+  box-shadow: 0 0 10px rgba(156, 181, 201, 0.55);
+  font-weight: bold;
+  padding: 0 14px;
+}
+#workspaces button:hover {
+  background: rgba(156, 181, 201, 0.3);
+  padding: 0 13px;
+}
+
+/* --- CLOCK — kept your cyberpunk theme, just synced to the shared card + glow --- */
+#clock {
+  font-size: 14px;
+  font-weight: bold;
+  color: #00f0ff;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  letter-spacing: 1px;
+}
+#clock:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 14px rgba(255, 0, 255, 0.85);
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(255, 0, 255, 0.4);
+}
+
+/* =========================================
+   DYNAMIC ICON STATES
+   ========================================= */
+
+/* --- NETWORK --- */
+#custom-network.wifi-off { color: @wifi_disconnected; border-color: rgba(243, 139, 168, 0.5); }
+#custom-network.wifi-on { color: @on_surface; }
+#custom-network.wifi-connected { color: @wifi_connected; border-color: rgba(166, 227, 161, 0.5); }
+#custom-network.wifi-off:hover { border-color: @wifi_disconnected; box-shadow: 0 0 14px rgba(243, 139, 168, 0.5); }
+#custom-network.wifi-connected:hover { border-color: @wifi_connected; box-shadow: 0 0 14px rgba(166, 227, 161, 0.5); }
+
+/* --- BLUETOOTH — now a custom/bluetooth module (bluetooth.sh), styled the
+   same way as #custom-network so both wireless icons feel like one family --- */
+#custom-bluetooth {
+  font-size: 15px;
+}
+#custom-bluetooth.bt-off { color: #6c7086; border-color: rgba(108, 112, 134, 0.3); }
+#custom-bluetooth.bt-on { color: @primary; text-shadow: 0 0 4px rgba(156, 181, 201, 0.4); }
+#custom-bluetooth.bt-connected { color: #89b4fa; border-color: rgba(137, 180, 250, 0.5); text-shadow: 0 0 6px rgba(137, 180, 250, 0.55); }
+#custom-bluetooth.bt-connected:hover { background: #89b4fa; color: @text; border-color: #89b4fa; box-shadow: 0 0 14px rgba(137, 180, 250, 0.5); text-shadow: none; }
+#custom-bluetooth.bt-off:hover { border-color: #6c7086; box-shadow: 0 0 10px rgba(108, 112, 134, 0.4); }
+
+/* --- VOLUME — 5-block gauge (volume.sh), same monospace treatment as
+   #custom-battery so both bracket bars render evenly-spaced blocks --- */
+#custom-volume {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  letter-spacing: 0px;
+}
+#custom-volume.volume-mute { color: #6c7086; }
+#custom-volume.volume-low { color: #f38ba8; }
+#custom-volume.volume-med-low { color: #fab387; }
+#custom-volume.volume-med { color: #f9e2af; }
+#custom-volume.volume-high { color: #a6e3a1; }
+#custom-volume.volume-max {
+  color: #89b4fa;
+  text-shadow: 0 0 8px rgba(137, 180, 250, 0.6);
+}
+#custom-volume:hover { border-color: currentColor; box-shadow: 0 0 14px currentColor; }
+
+/* --- BATTERY — FIXED: was #battery, module is custom/battery so it's #custom-battery.
+   None of these states (including the critical blink) were ever applying before. --- */
+#custom-battery {
+  font-weight: 600;
+}
+#custom-battery.discharging { color: @on_surface; }
+#custom-battery.good { color: @on_surface; }
+#custom-battery.charging, #custom-battery.plugged {
+  color: #f9e2af;
+  text-shadow: 0 0 6px rgba(249, 226, 175, 0.5);
+  border-color: rgba(249, 226, 175, 0.5);
+}
+#custom-battery.charging:hover, #custom-battery.plugged:hover {
+  border-color: #f9e2af;
+  box-shadow: 0 0 14px rgba(249, 226, 175, 0.5);
+}
+#custom-battery.warning {
+  color: #fab387;
+  border-color: rgba(250, 179, 135, 0.5);
+}
+#custom-battery.warning:hover {
+  border-color: #fab387;
+  box-shadow: 0 0 14px rgba(250, 179, 135, 0.5);
+}
+#custom-battery.critical {
+  color: #f38ba8;
+  border-color: rgba(243, 139, 168, 0.6);
+  animation: blink 1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 14px rgba(243, 139, 168, 0.6);
+  }
+}
+
+/* --- POWER BUTTON --- */
+#custom-power {
+  font-size: 15px;
+  color: #f38ba8;
+  text-shadow: 0 0 5px rgba(243, 139, 168, 0.35);
+  background-color: rgba(243, 139, 168, 0.12);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 60%);
+  border-color: rgba(243, 139, 168, 0.3);
+}
+#custom-power:hover {
+  border-color: #f38ba8;
+  box-shadow: 0 0 14px rgba(243, 139, 168, 0.55);
+}
+/* pressed feedback right as the glossy power-menu.rasi popup opens */
+#custom-power:active {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.1) 100%);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4), 0 0 10px rgba(243, 139, 168, 0.5);
+}

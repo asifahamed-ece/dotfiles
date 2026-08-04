@@ -1,0 +1,11 @@
+# ~/.config/systemd/user/cliphist-daemon.service
+[Unit]
+Description=Cliphist clipboard watcher
+
+[Service]
+ExecStart=%h/.config/hypr/scripts/cliphist-daemon.sh
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

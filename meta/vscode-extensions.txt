@@ -1,0 +1,9 @@
+asifahamed-ece.ciopt-core
+marus25.cortex-debug
+mcu-debug.debug-tracker-vscode
+mcu-debug.memory-view
+mcu-debug.peripheral-viewer
+mcu-debug.rtos-views
+ms-vscode.cpptools
+platformio.platformio-ide
+saoudrizwan.claude-dev

@@ -1,0 +1,111 @@
+/* ==========================================
+   ROFI GLASSY APP LAUNCHER (Mountain Sky Theme)
+   ========================================== */
+
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    drun-display-format: "{icon} {name}";
+    hide-scrollbar: true;
+    location: 0;
+}
+
+/* --- THEME VARIABLES --- */
+* {
+    bg:          rgba ( 15, 15, 20, 0.75 );  /* More opaque to prevent wallpaper bleed */
+    bg-light:    rgba ( 25, 25, 35, 0.85 );
+    border:      rgba ( 137, 180, 250, 0.93 );  /* Catppuccin Blue - solid border */
+    selected:    rgba ( 156, 181, 201, 0.25 );
+    accent:      #9cb5c9;
+    text:        #e1e4da;
+    
+    font: "JetBrainsMono Nerd Font Propo 10";
+}
+
+/* --- MAIN WINDOW --- */
+window {
+    height: 450px;
+    width: 600px;
+    border: 2px;
+    border-color: @border;  /* Solid Catppuccin Blue border */
+    border-radius: 16px;
+    background-color: @bg;
+    padding: 10px;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing: 8px;
+}
+
+/* --- SEARCH INPUT BAR --- */
+inputbar {
+    children: [ prompt, entry ];
+    background-color: @bg-light;
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @accent;
+    font: "JetBrainsMono Nerd Font Propo 12";
+    padding: 0px 8px 0px 0px;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @text;
+    placeholder-color: rgba ( 225, 228, 218, 0.4 );
+}
+
+/* --- APP GRID (2 Columns) --- */
+listview {
+    background-color: transparent;
+    columns: 2;
+    lines: 8;
+    spacing: 8px;
+    cycle: true;
+    dynamic: true;
+}
+
+/* Hide scrollbar completely */
+scrollbar {
+    handle-width: 0px;
+    handle-color: transparent;
+    background-color: transparent;
+}
+
+element {
+    padding: 8px;
+    spacing: 8px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+/* Normal App Items */
+element normal.normal, element alternate.normal {
+    background-color: rgba ( 255, 255, 255, 0.03 );
+    text-color: @text;
+}
+
+/* Hovered / Selected App Items */
+element selected.normal {
+    background-color: @selected;
+    border: 1px;
+    border-color: @border;
+    text-color: @accent;
+}
+
+/* Icons and Text Alignment */
+element-icon {
+    size: 28px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+}

@@ -1,0 +1,4 @@
+[Unit]
+Description=Hyprland graphical session holder
+Requires=graphical-session.target
+After=graphical-session.target

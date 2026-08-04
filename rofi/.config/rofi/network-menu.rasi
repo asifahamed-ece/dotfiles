@@ -1,0 +1,25 @@
+@import "~/.config/rofi/glass.rasi"
+
+/*
+ * network-menu.rasi — WiFi popup override.
+ * network-menu.sh prints fixed-width columns (SSID / security / band /
+ * signal%), which got clipped at the shared 320px width. Widened the box
+ * and dropped the font a touch so every column stays visible instead of
+ * being cut off or wrapping.
+ */
+
+window {
+    width: 460px;
+}
+
+* {
+    font: "JetBrainsMono Nerd Font Propo 11";
+}
+
+element {
+    padding: 8px 12px;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font Propo 11";
+}

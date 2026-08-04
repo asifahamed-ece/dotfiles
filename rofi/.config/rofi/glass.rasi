@@ -1,0 +1,131 @@
+/*
+ * glass.rasi — shared translucent "glass" base theme for all rofi popups
+ * (WiFi, Bluetooth, Power). Matches the Tokyo-Night glass palette from
+ * waybar's style.css so every popup feels like one consistent system.
+ *
+ * NOTE: transparency: "real" needs a compositor doing the blurring (Hyprland
+ * does). For the popup itself to actually blur what's behind it (not just
+ * tint it), add a layer rule in hyprland.conf / hyprland.lua, matching the
+ * rofi window class:
+ *   layerrule = blur, rofi
+ *   layerrule = ignorealpha 0.15, rofi
+ */
+
+* {
+    bg-glass:      rgba(15, 15, 20, 0.65);
+    bg-glass-alt:  rgba(255, 255, 255, 0.08);
+    bg-glass-hi:   rgba(255, 255, 255, 0.16);
+    border-glass:  rgba(255, 255, 255, 0.14);
+    primary:       #9cb5c9;
+    text-col:      #e1e4da;
+    urgent:        #f38ba8;
+
+    background-color: transparent;
+    text-color: @text-col;
+    font: "JetBrainsMono Nerd Font Propo 11";
+}
+
+window {
+    transparency: "real";
+    background-color: @bg-glass;
+    border: 1px solid;
+    border-color: @border-glass;
+    border-radius: 16px;
+    padding: 14px;
+    location: north east;
+    anchor: north east;
+    x-offset: -20px;
+    y-offset: 32px;
+    width: 320px;
+
+    /* fake a subtle "glossy" top highlight/vignette without transform
+       support — a slight lighter tint at the top edge via padding+border */
+    border-radius: 16px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ "inputbar", "listview" ];
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: @bg-glass-alt;
+    border: 1px solid;
+    border-color: @border-glass;
+    border-radius: 12px;
+    padding: 8px 12px;
+    children: [ "prompt", "entry" ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @primary;
+    font: "JetBrainsMono Nerd Font Propo 11 Bold";
+}
+
+entry {
+    background-color: transparent;
+    text-color: @text-col;
+    placeholder: "Search...";
+    placeholder-color: rgba(225, 228, 218, 0.4);
+    cursor: text;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    spacing: 4px;
+    scrollbar: false;
+    fixed-height: false;
+    cycle: true;
+}
+
+element {
+    background-color: transparent;
+    text-color: @text-col;
+    border-radius: 10px;
+    padding: 9px 12px;
+    orientation: horizontal;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @text-col;
+}
+
+element selected {
+    background-color: @primary;
+    text-color: #1d2021;
+    border-radius: 10px;
+    /* rofi's rasi parser here rejects box-shadow, so the "glow" is faked
+       with a brighter gradient sheen instead of a real blurred shadow */
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.0));
+}
+
+element alternate.normal {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0;
+}
+
+element-icon {
+    size: 16px;
+    vertical-align: 0.5;
+}
+
+message {
+    background-color: @bg-glass-alt;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+textbox {
+    text-color: @text-col;
+    background-color: transparent;
+}

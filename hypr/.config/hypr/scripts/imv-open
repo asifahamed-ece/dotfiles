@@ -1,0 +1,28 @@
+#!/bin/bash
+# imv-open: open imv with the whole folder, starting at the clicked image
+target="$1"
+
+if [ ! -f "$target" ]; then
+    imv "$@" &
+    exit 0
+fi
+
+dir=$(dirname -- "$target")
+base=$(basename -- "$target")
+
+# Replicate imv's folder expansion (image files, sorted) to find the start index
+idx=0
+while IFS= read -r name; do
+    [ "$name" = "$base" ] && break
+    idx=$((idx + 1))
+done < <(
+    cd "$dir" || exit 1
+    for f in *; do
+        case "${f,,}" in
+            *.png|*.jpg|*.jpeg|*.webp|*.gif|*.bmp|*.svg|*.heic|*.heif|*.avif|*.tif|*.tiff)
+                [ -f "$f" ] && printf '%s\n' "$f" ;;
+        esac
+    done
+)
+
+imv -n "$idx" "$dir" &

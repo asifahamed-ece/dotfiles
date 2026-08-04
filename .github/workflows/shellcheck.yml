@@ -9,3 +9,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run ShellCheck on all scripts
         uses: ludeeus/action-shellcheck@master
+        with:
+          # Tell it to ignore your README file specifically
+          ignore_names: "README.md Readme readme"

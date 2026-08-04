@@ -1,13 +1,35 @@
-# Swap and backup files
+# ===== Secrets & credentials (NEVER commit) =====
+.git-credentials
+*.pem
+*.key
+key4.db
+logins.json
+cookies.sqlite
+places.sqlite
+**/gh/hosts.yml
+
+# ===== Browser profiles =====
+mozilla/
+**/mozilla/
+
+# ===== Shell history & logs =====
+.bash_history
+*.log
+
+# ===== Caches =====
+**/.cache/
+__pycache__/
+*.pyc
+
+# ===== Editor swap/backup junk =====
 *.swp
 *.swo
 *~
 .DS_Store
-# Python
-__pycache__/
-*.pyc
-# Cache
-*/.cache/
-.git-credentials
-mozilla/
-**/mozilla/
+
+# ===== VS Code machine-specific junk =====
+**/Code/User/workspaceStorage/
+**/Code/User/globalStorage/
+**/Code/User/History/
+**/Code/User/cache/
+**/Code/User/CachedProfilesData/

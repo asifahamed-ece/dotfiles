@@ -3,7 +3,7 @@
 > My first Arch Linux rice — engineered like a product.
 > A lightweight, keyboard-driven **Hyprland** setup for Wayland, built by an embedded-systems student who refuses to use a mouse more than necessary.
 
-![ShellCheck](https://github.com/asifahamed-ece/dotfiles/actions/workflows/shellcheck.yml/badge.svg)
+![ShellCheck](https://github.com/asifahamed-ece/dotfiles/actions/workflows/shellcheck.yml)
 ![Arch](https://img.shields.io/badge/Arch-Linux-1793d1?logo=archlinux&logoColor=white)
 ![Hyprland](https://img.shields.io/badge/Hyprland-Wayland-58e6ca)
 
@@ -112,3 +112,4 @@ See [SECURITY.md](SECURITY.md). Browser profiles, credentials and history are ha
 ---
 
 *Built with ☕ and stubbornness by **Asif Ahamed** — final-year ECE student, embedded systems enthusiast, professional green-square collector.* 🐧- [Security Policy](SECURITY.md)
+

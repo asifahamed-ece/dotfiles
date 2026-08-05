@@ -1,3 +1,4 @@
+
 # 🌙 ShadowArch Dotfiles
 
 > **Beautiful, minimal Arch Linux + Hyprland dotfiles with Catppuccin aesthetics**
@@ -8,7 +9,7 @@
 
 ---
 
-## 📸 Gallery
+## 📸 Gallery  
 
 <div align="center">
 
@@ -173,7 +174,7 @@ See [`meta/vscode-extensions.txt`](meta/vscode-extensions.txt) (9 extensions).
 
 ## 🖼️ Wallpapers
 
-The wallpapers are **not included** in this repository to keep it lightweight. 
+The wallpapers are **not included** in this repository to keep it lightweight.
 
 ### Recommended Setup
 1. Download your favorite wallpapers

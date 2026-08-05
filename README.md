@@ -15,13 +15,16 @@
 ![Desktop Overview](assets/desktop-overview.png)
 *Desktop Overview - Hyprland with Waybar*
 
-![Application Launcher](assets/rofi-launcher.png)
-*Rofi Application Launcher (SUPER+SPACE)*
-
-![File Manager](assets/yazi-filemanager.png)
-*Yazi File Manager with Catppuccin Theme*
-
 </div>
+
+### 🚀 Launcher & File Manager
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/rofi-launcher.png" width="300" alt="Rofi Launcher"/><br/><b>Rofi Launcher</b></td>
+    <td align="center"><img src="assets/yazi-filemanager.png" width="300" alt="Yazi File Manager"/><br/><b>Yazi File Manager</b></td>
+  </tr>
+</table>
 
 ---
 

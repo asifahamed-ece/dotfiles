@@ -15,14 +15,11 @@
 ![Desktop Overview](assets/desktop-overview.png)
 *Desktop Overview - Hyprland with Waybar*
 
-![Application Launcher](assets/launcher.png)
+![Application Launcher](assets/rofi-launcher.png)
 *Rofi Application Launcher (SUPER+SPACE)*
 
-![File Manager](assets/yazi.png)
+![File Manager](assets/yazi-filemanager.png)
 *Yazi File Manager with Catppuccin Theme*
-
-![Lock Screen](assets/lockscreen.png)
-*Hyprlock Security Screen*
 
 </div>
 

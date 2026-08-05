@@ -1,35 +1,69 @@
-# ===== Secrets & credentials (NEVER commit) =====
-.git-credentials
-*.pem
-*.key
-key4.db
-logins.json
-cookies.sqlite
-places.sqlite
-**/gh/hosts.yml
+```
+# Dependencies
+node_modules/
 
-# ===== Browser profiles =====
-mozilla/
-**/mozilla/
-
-# ===== Shell history & logs =====
-.bash_history
+# Logs and temp files
 *.log
+*.tmp
 
-# ===== Caches =====
-**/.cache/
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+build/
+target/
+
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
 
-# ===== Editor swap/backup junk =====
-*.swp
-*.swo
-*~
+# Compression
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# System files
 .DS_Store
+Thumbs.db
 
-# ===== VS Code machine-specific junk =====
-**/Code/User/workspaceStorage/
-**/Code/User/globalStorage/
-**/Code/User/History/
-**/Code/User/cache/
-**/Code/User/CachedProfilesData/
+# Cache
+.mypy_cache/
+.pytest_cache/
+.gradle/
+```

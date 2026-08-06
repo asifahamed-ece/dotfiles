@@ -1,54 +1,563 @@
-Nothing needs to be added to .gitignore since only a README.md file was modified and no build artifacts, dependencies, or temporary files were detected in the changes.
-# Examples
+# System files
+.DS_Store
+Thumbs.db
 
-    Input:
-    ### Added files:
-    [src/main.py, README.md, config.json]
-
-    ### Deleted files:
-    [old/unused.py]
-    ### Modified files:
-    [utils.py]
-    ###current .gitignore Content
-    (empty)
-    Expected Output:
-    (empty — output nothing)
-
-# Example 2 (Project with artifacts):
-Input:
-### Added files:
-[pycache/main.cpython-310.pyc, dist/app.js, .env.local, .vscode/settings.json
-
-### Deleted files:
-    []
-
-### Modified files:
-[]
-### current .gitignore Content
+# Logs
 *.log
-Expected Output:
-    #Compiled and build artifacts
-    *.pyc
-    pycache/
-    *.o
-    *.obj
-    dist/
-    build/
-    #Dependencies
-    .venv/
-    venv/
-    node_modules/
-    #Logs and temp files
-    *.log
-    *.tmp
-    *.swp
-    #Environment
-    .env
-    .env.local
-    .env.
-    #Editors
-    .vscode/
-    .idea/
-    #Original rules preserved
-    *.log
-Final reminder: Output ONLY the .gitignore content. If nothing should be ignored, output NOTHING.
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+*.env.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.coverage
+coverage/
+htmlcov/
+.mypy_cache/
+.pytest_cache/
+
+# Build results
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.ENV/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Icon?
+.apdisk
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# Rust
+target/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.so
+*.dll
+*.dylib
+*.class
+*.o
+*.a
+*.lib
+*.obj
+*.exe
+*.out
+*.app
+*.bin
+*.dll
+*.so
+*.dylib
+*.jar
+*.war
+*.ear
+*.nar
+*.class
+*.o
+*.a
+*.lib
+*.obj
+*.exe
+*.out
+*.app
+*.bin
+*.dll
+*.so
+*.dylib
+*.jar
+*.war
+*.ear
+*.nar
+.class
+.o
+.a
+.lib
+.obj
+.exe
+.out
+.app
+.bin
+.dll
+.so
+.dylib
+.jar
+.war
+.ear
+.nar
+.gradle/
+build/
+*.gradle
+
+# C/C++
+*.o
+*.a
+*.lib
+*.obj
+*.exe
+*.out
+*.app
+*.bin
+*.dll
+*.so
+*.dylib
+
+# Go
+*.o
+*.a
+*.lib
+*.obj
+*.exe
+*.out
+*.app
+*.bin
+*.dll
+*.so
+*.dylib
+*.test
+
+# Ruby
+*.gem
+*.rbc
+*.sass-cache
+capybara-*.html
+.rspec
+vendor/bundle/
+.bundle/
+.rbenv-vars
+*.gem
+.rake
+*.rbc
+*.sass-cache
+capybara-*.html
+.rspec
+.bundle/
+
+# PHP
+*.phar
+.php_cs.cache
+.php_history
+vendor/
+
+# .NET
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.exe.config
+*.userprefs
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Julia
+.julia/
+*.ji
+*.mem
+*.so
+*.dylib
+*.dll
+deps/build.jl
+test/*.res
+
+# Zig
+zig-cache/
+zig-out/
+
+# Haskell
+dist-newstyle/
+cabal.project.local
+cabal.project.local~
+dist/
+*.o
+*.hi
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+
+# Elixir
+*.beam
+*.ez
+.beam
+.elixir_ls/
+cover/
+erl_crash.dump
+include_config
+
+# Erlang
+*.beam
+*.plt
+.erlang.cookie
+.eunit
+.rebar
+.rebar3
+ebin/
+logs/
+tmp/
+
+# Clojure
+*.class
+.target/
+log/
+.clj-kondo/
+
+# Dart
+.dart_tool/
+.packages
+*.dart.js
+*.dart.js.map
+build/
+
+# Flutter
+flutter/
+.dart_tool/
+.packages
+build/
+ios/Flutter/flutter_assets/packages/
+
+# Android
+*.apk
+*.aar
+*.iml
+*.so
+local.properties
+.gradle/
+build/
+captures/
+.externalNativeBuild
+.cxx/
+
+# iOS
+*.ipa
+*.app
+*.mobileprovision
+*.xcworkspace
+!.xcworkspace/contents.xcworkspacedata
+*.xcuserstate
+.DS_Store
+build/
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM
+*.sdef
+*.strings
+*.plist
+*.nib
+*.xcuserdatad
+*.xccheckout
+*.moved-aside
+*.pbxuser
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+*.perspective
+*.backup
+*.entitlements
+*.mobileprovision
+*.xcodeproj
+*.xcodeproj/
+*.xcworkspace
+*.xcworkspace/
+*.xcassets
+*.xcassets/
+*.lproj
+*.lproj/
+*.storyboard
+*.storyboardc
+*.xib
+*.bundle
+*.framework
+*.appex
+*.dylib
+*.tbd
+*.dSYM
+*.dSYM.zip
+*.mobileprovision
+*.provisionprofile
+*.xcarchive
+*.xcconfig
+*.xcsettings
+*.xcscheme
+*.xcschemes
+*.xcscmblueprint
+*.xcscmblueprints
+*.xcclassmodel
+*.xccurrentversions
+*.xcmappingmodel
+*.xcmappingmodels
+*.xcdatamodel
+*.xcdatamodels
+*.xcdocument.xcdocplugin
+*.xcfilelist
+*.xclayout
+*.xcmacros
+*.xcsynonym
+*.xctemplate
+*.xctest
+*.xctestbundle
+*.xpc
+*.xpcproxy
+*.xpcservice
+*.xpcservices
+*.xpcframework
+*.xpcframeworks
+*.xpcpluginkit
+*.xpcpluginkits
+*.xpcpluginkitbundle
+*.xpcpluginkitbundles
+*.xpcpluginkitframework
+*.xpcpluginkitframeworks
+*.xpcpluginkitlibrary
+*.xpcpluginkitlibraries
+*.xpcpluginkitmodule
+*.xpcpluginkitmodules
+*.xpcpluginkitplugin
+*.xpcpluginkitplugins
+*.xpcpluginkitextension
+*.xpcpluginkitextensions
+*.xpcpluginkittheme
+*.xpcpluginkitthemes
+*.xpcpluginkitwidget
+*.xpcpluginkitwidgets
+*.xpcpluginkitapplication
+*.xpcpluginkitapplications
+*.xpcpluginkitdaemon
+*.xpcpluginkitdaemons
+*.xpcpluginkitdriver
+*.xpcpluginkitdrivers
+*.xpcpluginkitfilter
+*.xpcpluginkitfilters
+*.xpcpluginkithelper
+*.xpcpluginkithelpers
+*.xpcpluginkitinputmethod
+*.xpcpluginkitinputmethods
+*.xpcpluginkitinstaller
+*.xpcpluginkitinstallers
+*.xpcpluginkitprefpane
+*.xpcpluginkitprefpanes
+*.xpcpluginkitprinter
+*.xpcpluginkitprinters
+*.xpcpluginkitquicklook
+*.xpcpluginkitquicklooks
+*.xpcpluginkitshare
+*.xpcpluginkitshares
+*.xpcpluginkiturlhandler
+*.xpcpluginkiturlhandlers
+*.xpcpluginkitwatch
+*.xpcpluginkitwatches
+*.xpcpluginkitwatchkit
+*.xpcpluginkitwatchkits
+*.xpcpluginkitwatchkitapp
+*.xpcpluginkitwatchkitapps
+*.xpcpluginkitwatchkitextension
+*.xpcpluginkitwatchkitextensions
+*.xpcpluginkitwatchkitappex
+*.xpcpluginkitwatchkitappexes
+*.xpcpluginkitwatchkitappexs
+*.xpcpluginkitwatchkitappextension
+*.xpcpluginkitwatchkitappextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpc......
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpc......
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpcpluginkitwatchkitappexextension
+*.xpcpluginkitwatchkitappexextensions
+*.xpc......

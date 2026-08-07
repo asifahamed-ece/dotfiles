@@ -12,6 +12,11 @@ hl.window_rule({ name = "float_nmconnection", match = { class = "^(nm-connection
 hl.window_rule({ name = "float_zenity", match = { class = "^(zenity)$" }, float = true })
 hl.window_rule({ name = "float_thunar", match = { class = "^(thunar)$" }, float = true })
 
+-- Quickshell window rules - treat as a layer surface, not a regular window
+-- Quickshell bars are layer surfaces, but this helps if any Quickshell windows appear
+hl.window_rule({ name = "quickshell-no-anim", match = { class = "^quickshell$" }, no_anim = true })
+hl.window_rule({ name = "quickshell-no-focus", match = { class = "^quickshell$" }, no_focus = true })
+
 hl.window_rule({ name = "opacity_kitty", match = { class = "^(kitty)$" }, opacity = "0.95 0.85" })
 hl.window_rule({ name = "opacity_thunar", match = { class = "^(thunar)$" }, opacity = "0.95 0.85" })
 
@@ -23,4 +28,10 @@ hl.window_rule({ name = "opacity_thunar", match = { class = "^(thunar)$" }, opac
 
 hl.layer_rule({ match = { namespace = "rofi" }, blur = true, ignore_alpha = 0.4 })
 hl.layer_rule({ match = { namespace = "wofi" }, blur = true, ignore_alpha = 0.4 })
+
+-- Quickshell layer rules - enable blur for the glass effect (matching Waybar CSS)
+-- This is the Hyprland-side equivalent of:
+-- "layerrule = match:namespace quickshell, blur on"
+-- "layerrule = match:namespace quickshell, ignore_alpha 0.15"
+hl.layer_rule({ match = { namespace = "^quickshell$" }, blur = true, ignore_alpha = 0.15 })
 

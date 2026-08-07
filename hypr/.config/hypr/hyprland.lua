@@ -30,7 +30,9 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("sh -c 'systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP; systemctl --user restart --no-block cliphist-text.service cliphist-image.service'")
 
   hl.exec_cmd("swayosd-server &")
-  hl.exec_cmd("waybar &")
+  -- Waybar replaced with Quickshell for event-driven, GPU-accelerated UI
+  -- hl.exec_cmd("waybar &")
+  hl.exec_cmd("quickshell &")
   hl.exec_cmd("hyprpaper &")
   hl.exec_cmd("swaync &")
 
@@ -127,10 +129,8 @@ hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1} 
 -- Default springs
 hl.curve("easy",           { type = "spring", mass = 1, stiffness = 238.1191, dampening = 24.21279333 })
 
--- Snappier, smoother curves
+-- Snappier, smoother curves (refined - no duplicates)
 hl.curve("easeOutExpo",    { type = "bezier", points = { {0.16, 1}, {0.3, 1} } })
-hl.curve("easeInOutCubic", { type = "bezier", points = { {0.65, 0.05}, {0.36, 1} } })
-hl.curve("linear",         { type = "bezier", points = { {0, 0}, {1, 1} } })
 hl.curve("overshoot",      { type = "bezier", points = { {0.35, 1.1}, {0.65, 1.1} } }) -- Subtle, elegant bounce
 
 hl.animation({ leaf = "global",        enabled = true, speed = 3.5, bezier = "easeOutExpo" })
@@ -183,49 +183,6 @@ hl.config({
         vrr = 1, -- Enable Variable Refresh Rate (0=off, 1=on, 2=fullscreen only)
         mouse_move_enables_dpms = true,
     },
-})
-
-hl.config({
-    input = {
-        kb_layout  = "us",
-        kb_variant = "",
-        follow_mouse = 1,
-        sensitivity = 0.0,
-        numlock_by_default = true,
-        touchpad = {
-            natural_scroll = true, -- Feels much more modern and intuitive
-            tap_to_click = true,
-        },
-    },
-})
-
-
----------------
----- INPUT ----
----------------
-
-hl.config({
-    input = {
-        kb_layout  = "us",
-        kb_variant = "",
-        kb_model   = "",
-        kb_options = "",
-        kb_rules   = "",
-
-        follow_mouse = 1,
-
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-
-        touchpad = {
-            natural_scroll = false,
-        },
-    },
-})
-
-hl.gesture({
-    fingers = 3,
-    direction = "horizontal",
-    action = "workspace"
 })
 
 -- Example per-device config
@@ -304,6 +261,11 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("swayosd-client --brightness lo
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+-- === QUICKSHELL MEDIA PLAYER TOGGLE ===
+-- Toggle the Quickshell media player overlay with SUPER + M
+-- The MediaPlayer component is event-driven and only renders when media is playing
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("playerctl play-pause"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----

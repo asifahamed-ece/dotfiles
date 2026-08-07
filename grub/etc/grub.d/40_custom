@@ -10,7 +10,7 @@ menuentry "Shadow's Arch Linux" --class arch_linux --class gnu-linux --class gnu
 	insmod gzio
 	insmod part_gpt
 	insmod fat
-	search --no-floppy --fs-uuid --set=root BD71-1CA3
+	search --no-floppy --fs-uuid --set=root BD71-1CA3		# 🚧 Check and Modify your Disk UUIDs before running and Build the Grub 🚧 #
 	linux	/vmlinuz-linux root=UUID=4b92a442-a33b-4fc5-a30d-5e7ef4294a51 rw loglevel=5 nvidia-drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1 nvme_core.default_ps_max_latency_us=10000 pcie_aspm=off
 	initrd /amd-ucode.img /initramfs-linux.img
 }

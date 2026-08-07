@@ -10,9 +10,9 @@ require("windowrules")
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
     output   = "",
-    mode     = "preferred",
-    position = "auto",
-    scale    = "auto",
+    mode     = "",
+    position = "",
+    scale    = "",
 })
 
 -------------------
@@ -48,9 +48,14 @@ end)
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_SIZE", "20")
+hl.env("XCURSOR_THEME","Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_SIZE", "20")
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice") 
 
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 
 -----------------------
 ----- PERMISSIONS -----

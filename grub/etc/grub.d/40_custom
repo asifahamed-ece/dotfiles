@@ -1,0 +1,40 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+
+menuentry "Shadow's Arch Linux" --class arch_linux --class gnu-linux --class gnu --class os {
+	load_video
+	set gfxpayload=keep
+	insmod gzio
+	insmod part_gpt
+	insmod fat
+	search --no-floppy --fs-uuid --set=root BD71-1CA3
+	linux	/vmlinuz-linux root=UUID=4b92a442-a33b-4fc5-a30d-5e7ef4294a51 rw loglevel=5 nvidia-drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1 nvme_core.default_ps_max_latency_us=10000 pcie_aspm=off
+	initrd /amd-ucode.img /initramfs-linux.img
+}
+
+menuentry 'Windows Boot Manager' --class windows --class os {
+	insmod part_gpt
+	insmod fat
+	search --no-floppy --fs-uuid --set=root 2A75-B79D
+	chainloader /efi/Microsoft/Boot/bootmgfw.efi
+}
+
+submenu "Advanced options for Shadow's Arch Linux" --class arch_linux {
+	menuentry "Shadow's Arch Linux, with Linux linux" --class arch_linux {
+		load_video
+		set gfxpayload=keep
+		insmod gzio
+		insmod part_gpt
+		insmod fat
+		search --no-floppy --fs-uuid --set=root BD71-1CA3
+		linux	/vmlinuz-linux root=UUID=4b92a442-a33b-4fc5-a30d-5e7ef4294a51 rw loglevel=5 nvidia-drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1 nvme_core.default_ps_max_latency_us=10000 pcie_aspm=off
+		initrd /amd-ucode.img /initramfs-linux.img
+	}
+}
+
+menuentry 'UEFI Firmware Settings' {
+	fwsetup
+}

@@ -5,8 +5,8 @@
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
 	<unique-id>1785568779399293-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
-	<description>Example for a custom action</description>
+	<command>kitty --working-directory %f</command>
+	<description>Open Kitty terminal in this folder</description>
 	<range></range>
 	<patterns>*</patterns>
 	<startup-notify/>

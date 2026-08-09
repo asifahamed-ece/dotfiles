@@ -9,7 +9,7 @@ require("windowrules")
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "DP-1",
+    output   = "eDP-1",
     mode     = "1920x1080@144",
     position = "0x0",
     scale    = "1.33",
@@ -30,8 +30,8 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("sh -c 'systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP; systemctl --user restart --no-block cliphist-text.service cliphist-image.service'")
 
   hl.exec_cmd("swayosd-server &")
-  hl.exec_cmd("waybar &")
-  hl.exec_cmd("hyprpaper &")
+  hl.exec_cmd("sh -c 'sleep 0.5 && waybar' &")
+  hl.exec_cmd("sh -c 'sleep 0.5 && hyprpaper' &")
   hl.exec_cmd("swaync &")
 
   -- hl.exec_cmd("cliphist &")

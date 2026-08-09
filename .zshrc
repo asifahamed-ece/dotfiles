@@ -129,3 +129,11 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# >>> ESP-IDF EIM PATH >>>
+# Added by ESP-IDF extension so the EIM CLI can be launched directly.
+case ":$PATH:" in
+  *:"/home/shadow/.espressif/eim_gui":*) ;;
+  *) export PATH="/home/shadow/.espressif/eim_gui:$PATH" ;;
+esac
+# <<< ESP-IDF EIM PATH <<<

@@ -121,6 +121,9 @@ source $ZSH/oh-my-zsh.sh
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Yazi: cd on quit
+# --- ShadowArch Customizations ---
+
+# Yazi: cd on quit
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -130,10 +133,9 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# >>> ESP-IDF EIM PATH >>>
-# Added by ESP-IDF extension so the EIM CLI can be launched directly.
+# ESP-IDF EIM PATH
 case ":$PATH:" in
-  *:"/home/shadow/.espressif/eim_gui":*) ;;
-  *) export PATH="/home/shadow/.espressif/eim_gui:$PATH" ;;
+  *:"$HOME/.espressif/eim_gui":*) ;;
+  *) export PATH="$HOME/.espressif/eim_gui:$PATH" ;;
 esac
 # <<< ESP-IDF EIM PATH <<<

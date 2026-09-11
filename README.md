@@ -280,7 +280,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <div align="center">
 
-**Made with ❤️ by Aifahamed E (ShadowArch)**
+**Made with ❤️ by Asif Ahamed S (ShadowArch)**
 
 ⭐ Star this repo if you find it useful!
 
